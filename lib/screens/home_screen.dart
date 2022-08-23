@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qr_reader/providers/db_provider.dart';
 import 'package:qr_reader/screens/screens.dart';
 
 import '../providers/ui_provider.dart';
@@ -44,6 +45,9 @@ class _HomePageBody extends StatelessWidget{
 
     final uiProvider = Provider.of<UIProvider>(context);
     final currentIndex = uiProvider.selectedIndex;
+
+    // TODO: TEMPORAL BASE DE DATOS
+    DBProvider.db.database;
 
     switch(currentIndex){
       case 0:
