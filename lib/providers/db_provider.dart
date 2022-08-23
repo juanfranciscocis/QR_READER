@@ -8,6 +8,9 @@ import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
 import 'package:path/path.dart';
 
+import '../models/scan_model_model.dart';
+export '../models/scan_model_model.dart';
+
 class DBProvider{
 
   static Database? _database;
@@ -35,14 +38,11 @@ class DBProvider{
       onOpen: (db){},
       onCreate: (Database db, int version) async{
         await db.execute('''
-        
           CREATE TABLE Scans (
           id INTEGER PRIMARY KEY,
           tipo TEXT,
           valor TEXT
           )
-        
-        
         ''');
 
       }
@@ -50,5 +50,40 @@ class DBProvider{
 
   }
 
+  //Create a new Scan
+  Future<int?> newScanRaw(ScanModel scan) async{
 
+    final id  = scan.id;
+    final tipo = scan.tipo;
+    final valor = scan.valor;
+
+    //Get the database
+    final db = await database;
+
+    //Insert the new Scan
+    final response = await db?.rawInsert('''
+      INSERT INTO Scans (id, tipo, valor)
+      VALUES ( $id , '$tipo', '$valor')
+    '''
+    );
+
+    return response;
+
+  }
+
+//Create a new Scan Store it in the database and return the id
+  Future<int?> newScan (ScanModel scan) async{
+     final db = await database;
+     final response = await db?.insert('Scans', scan.toJson());
+     print(response);
+     return response;
+  }
+
+
+  //Get all the Scans
+  Future<ScanModel>getScanById ( int index ) async {
+    final db = await database;
+    final response = await db?.query('Scans', where: 'id = ?', whereArgs: [index]);
+    return ScanModel.fromJson(response!.first);
+  }
 }

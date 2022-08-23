@@ -34,10 +34,10 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  provider: ^6.0.3
-  flutter_barcode_scanner: ^2.0.0
-  path_provider: ^2.0.11
-  sqflite: ^2.0.3+1
+  provider: ^6.0.3 # Provider is a package for providing state management to your Flutter app.
+  flutter_barcode_scanner: ^2.0.0 # Flutter Barcode Scanner is a Flutter package for scanning barcodes.
+  path_provider: ^2.0.11 # Path Provider is a package for accessing the filesystem.
+  sqflite: ^2.0.3+1 # Sqflite is a SQLite client for Dart.
 
 dev_dependencies:
   flutter_test:
