@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class UIProvider extends ChangeNotifier{
 
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   UIProvider();
 

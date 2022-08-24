@@ -3,6 +3,7 @@
 
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
@@ -11,7 +12,7 @@ import 'package:path/path.dart';
 import '../models/scan_model_model.dart';
 export '../models/scan_model_model.dart';
 
-class DBProvider{
+class DBProvider extends ChangeNotifier{
 
   static Database? _database;
   static final DBProvider db = DBProvider._();
@@ -51,7 +52,7 @@ class DBProvider{
   }
 
   //Create a new Scan
-  Future<int?> newScanRaw(ScanModel scan) async{
+  Future<int?> newScanRaw(ScanModelModel scan) async{
 
     final id  = scan.id;
     final tipo = scan.tipo;
@@ -72,7 +73,7 @@ class DBProvider{
   }
 
 //Create a new Scan Store it in the database and return the id
-  Future<int?> newScan (ScanModel scan) async{
+  Future<int?> newScan (ScanModelModel scan) async{
      final db = await database;
      final response = await db?.insert('Scans', scan.toJson());
      print(response);
@@ -81,34 +82,34 @@ class DBProvider{
 
 
   //Get Scans by int id
-  Future<ScanModel>getScanById ( int index ) async {
+  Future<ScanModelModel>getScanById ( int index ) async {
     final db = await database;
     final response = await db?.query('Scans', where: 'id = ?', whereArgs: [index]);
-    return ScanModel.fromJson(response!.first);
+    return ScanModelModel.fromJson(response!.first);
   }
 
 
 
   //Get All Scans
-  Future<List<ScanModel>> getAllScans () async {
+  Future<List<ScanModelModel>> getAllScans () async {
     final db = await database;
     final response = await db?.query('Scans');
-    return response!.map((scan) => ScanModel.fromJson(scan)).toList();
+    return response!.map((scan) => ScanModelModel.fromJson(scan)).toList();
   }
 
   //Get Scans by type
-  Future<List<ScanModel>>getScanByType ( String type ) async {
+  Future<List<ScanModelModel>>getScanByType ( String type ) async {
     final db = await database;
     final response = await db!.rawQuery('''
       SELECT * FROM Scans
       WHERE tipo = '$type'
     ''');
 
-    return response.isNotEmpty? response.map((scan) => ScanModel.fromJson(scan)).toList():[];
+    return response.isNotEmpty? response.map((scan) => ScanModelModel.fromJson(scan)).toList():[];
   }
 
   //Update Scan data
-  Future<int> updateScan (ScanModel scan) async {
+  Future<int> updateScan (ScanModelModel scan) async {
     final db = await database;
     final response  = await db!.update('Scans', scan.toJson(), where: 'id = ?', whereArgs: [scan.id]);
     return response;

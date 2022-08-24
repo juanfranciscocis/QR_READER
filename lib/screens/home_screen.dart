@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_reader/providers/db_provider.dart';
+import 'package:qr_reader/providers/scan_list_provider.dart';
 import 'package:qr_reader/screens/screens.dart';
 
 import '../providers/ui_provider.dart';
@@ -52,12 +53,19 @@ class _HomePageBody extends StatelessWidget{
     //DBProvider.db.newScan(tempScan);
     //DBProvider.db.deleteAllScans();
 
+
+    //USAR EL PROVIDER
+    final scansProvider = Provider.of<ScanListProvider>(context, listen: false);
+
     switch(currentIndex){
       case 0:
+        scansProvider.getScansByType('geo');
         return MapsScreen();
       case 1:
+        scansProvider.getScansByType('http');
         return DirectionsScreen();
       default:
+        scansProvider.getScansByType('geo');
         return MapScreen();
     }
 

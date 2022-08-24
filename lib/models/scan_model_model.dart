@@ -1,10 +1,10 @@
-class ScanModel {
+class ScanModelModel {
 
   int? id;
   String? tipo;
   String valor;
 
-  ScanModel({
+  ScanModelModel({
     this.id,
     this.tipo,
     required this.valor,
@@ -18,7 +18,7 @@ class ScanModel {
   }
 
 
-  factory ScanModel.fromJson(Map<String, dynamic> json) => ScanModel(
+  factory ScanModelModel.fromJson(Map<String, dynamic> json) => ScanModelModel(
     id: json["id"],
     tipo: json["tipo"],
     valor: json["valor"],
