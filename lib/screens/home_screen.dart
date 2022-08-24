@@ -19,6 +19,8 @@ class HomeScreen extends StatelessWidget{
           IconButton(
             icon: Icon(Icons.delete),
             onPressed: (){
+             //open delete screen
+              Navigator.pushNamed(context, '/delete');
             },
           ),
         ],

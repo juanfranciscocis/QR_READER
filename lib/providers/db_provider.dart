@@ -19,6 +19,8 @@ class DBProvider extends ChangeNotifier{
 
   DBProvider._();
 
+  DBProvider();
+
   Future<Database?> get database async {
     if(_database != null) return _database;
     _database = await initDB();

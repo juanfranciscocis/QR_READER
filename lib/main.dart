@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qr_reader/providers/db_provider.dart';
 import 'package:qr_reader/providers/scan_list_provider.dart';
 import 'package:qr_reader/providers/ui_provider.dart';
 
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget{
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context)=> UIProvider()),
-        ChangeNotifierProvider(create: (context)=> ScanListProvider())
+        ChangeNotifierProvider(create: (context)=> ScanListProvider()),
+        ChangeNotifierProvider(create: (context)=> DBProvider())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -35,6 +37,7 @@ class MyApp extends StatelessWidget{
         routes:{
           '/home': (context) => HomeScreen(),
           '/map': (context) => MapScreen(),
+          '/delete': (context) => DeleteScreen(),
         },
       ),
     );

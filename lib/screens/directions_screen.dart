@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qr_reader/providers/db_provider.dart';
 
 import '../providers/scan_list_provider.dart';
 
@@ -9,6 +10,11 @@ class DirectionsScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     final scanListProvider  = Provider.of<ScanListProvider>(context, listen: true);
+
+    //data base provider
+    final dbProvider = Provider.of<DBProvider>(context, listen: false);
+
+
 
     return ListView.builder(
         itemCount: scanListProvider.scans.length,
