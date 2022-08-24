@@ -48,8 +48,9 @@ class _HomePageBody extends StatelessWidget{
 
     // TODO: TEMPORAL BASE DE DATOS
     //DBProvider.db.database;
-    final tempScan = ScanModel (valor: 'http://www.google.com');
-    DBProvider.db.newScan(tempScan);
+    //final tempScan = ScanModel (valor: 'http://www.google.com');
+    //DBProvider.db.newScan(tempScan);
+    //DBProvider.db.deleteAllScans();
 
     switch(currentIndex){
       case 0:
