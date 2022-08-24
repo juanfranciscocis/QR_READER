@@ -16,6 +16,7 @@ class _MapScreenState extends State<MapScreen> {
 
 
   Completer<GoogleMapController> _controller = Completer();
+  MapType mapType = MapType.normal;
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +34,23 @@ class _MapScreenState extends State<MapScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Map'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.location_on, color: Color.fromRGBO(144, 251,220 , 1),),
+            onPressed: (){
+              //go back to initial position
+              _controller.future.then((value) => value.animateCamera(
+                CameraUpdate.newCameraPosition(
+                  initialCameraPosition,
+                ),
+              ));
+            },
+          ),
+        ],
       ),
       body: GoogleMap(
-        mapType: MapType.normal,
+        myLocationButtonEnabled: false,
+        mapType: mapType,
         initialCameraPosition: initialCameraPosition,
         trafficEnabled: true,
         markers: {
@@ -47,6 +62,22 @@ class _MapScreenState extends State<MapScreen> {
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.layers),
+        onPressed: () {
+          //change map type
+          if (mapType == MapType.normal) {
+            mapType = MapType.satellite;
+          }else if (mapType == MapType.satellite) {
+            mapType = MapType.hybrid;
+          }else{
+            mapType = MapType.normal;
+          }
+          setState(() {
+          });
+        }
+
       ),
     );
   }
