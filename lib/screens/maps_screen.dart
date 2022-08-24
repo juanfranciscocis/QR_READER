@@ -20,7 +20,7 @@ class MapsScreen extends StatelessWidget{
           final id = scanListProvider.scans[index].id;
           return GestureDetector(
             onTap: (){
-              print('opening map');
+              Navigator.pushNamed(context, '/map', arguments: scanListProvider.scans[index]);
             },
             child: Card(
               color: Colors.grey[800],
@@ -39,8 +39,8 @@ class MapsScreen extends StatelessWidget{
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(title.toUpperCase(),style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),maxLines: 1 , overflow: TextOverflow.ellipsis,),
-                          Text('ID: ${id.toString()}', style: TextStyle(fontSize: 15)),
+                          Text(title.toUpperCase(),style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),maxLines: 1 , overflow: TextOverflow.ellipsis,),
+                          Text('ID: ${id.toString()}', style: TextStyle(fontSize: 10)),
                         ],
                       ),
                     ),

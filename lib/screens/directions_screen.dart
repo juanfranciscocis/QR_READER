@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:qr_reader/providers/db_provider.dart';
 
 import '../providers/scan_list_provider.dart';
+import '../utils/utils.dart';
 
 class DirectionsScreen extends StatelessWidget{
   const DirectionsScreen({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class DirectionsScreen extends StatelessWidget{
           final id = scanListProvider.scans[index].id;
           return GestureDetector(
             onTap: (){
-              print('opening direction');
+              launchURL(context,scanListProvider.scans[index]);
             },
             child: Card(
               color: Colors.grey[800],
@@ -42,8 +43,8 @@ class DirectionsScreen extends StatelessWidget{
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(title.toUpperCase(),style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),maxLines: 1 , overflow: TextOverflow.ellipsis,),
-                          Text('ID: ${id.toString()}', style: TextStyle(fontSize: 15)),
+                          Text(title.toUpperCase(),style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),maxLines: 1 , overflow: TextOverflow.ellipsis,),
+                          Text('ID: ${id.toString()}', style: TextStyle(fontSize: 10)),
                         ],
                       ),
                     ),

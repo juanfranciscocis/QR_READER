@@ -19,6 +19,8 @@ class ScanListProvider extends ChangeNotifier{
       this.scans.add(newScan);
       notifyListeners();
     }
+
+    return newScan;
   }
 
   getScans() async{

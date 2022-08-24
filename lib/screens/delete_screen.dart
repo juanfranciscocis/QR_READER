@@ -15,6 +15,7 @@ class DeleteScreen extends StatelessWidget{
     return Scaffold(
       appBar: AppBar(
         title: Text('Delete Scans'),
+        backgroundColor: Colors.red,
         actions: [
           IconButton(
             icon: Icon(Icons.delete),
@@ -61,7 +62,7 @@ class DeleteScreen extends StatelessWidget{
                 Navigator.pop(context);
               },
               child: Card(
-                color: Colors.redAccent,
+                color: Colors.red,
                 elevation: 10,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
@@ -77,8 +78,8 @@ class DeleteScreen extends StatelessWidget{
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(title.toUpperCase(),style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),maxLines: 1 , overflow: TextOverflow.ellipsis,),
-                            Text('ID: ${id.toString()}', style: TextStyle(fontSize: 15)),
+                            Text(title.toUpperCase(),style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),maxLines: 1 , overflow: TextOverflow.ellipsis,),
+                            Text('ID: ${id.toString()}', style: TextStyle(fontSize: 10)),
                           ],
                         ),
                       ),
