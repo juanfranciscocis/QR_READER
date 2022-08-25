@@ -1,5 +1,5 @@
 # QR Reader
-This is a flutter project, the app shows a full understanding of Google Maps APIs managin as well as how to open a internal browser in a iOS and Android app, how SQL works as a data base and internal storage and how app permissions work on iOS and Android in order to maintain users privacy. This QR Reader will store a full history of your scans and sort them by google maps locations or websites.
+This is a flutter project, the app shows a full understanding of Google Maps API managin as well as how to open a internal browser in a iOS and Android app, how SQL works as a data base and internal storage and how app permissions work on iOS and Android in order to maintain users privacy. This QR Reader will store a full history of your scans and sort them by google maps locations or websites.
 
 ## How To Open The Project?
 1. Download and open all of the project file using a flutter compatible IDE.
